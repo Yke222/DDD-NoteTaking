@@ -16,15 +16,15 @@ class EmailAdress extends ValueObject<String> {
   const EmailAdress._(this.value);
 }
 
-class Pasword extends ValueObject<String> {
+class Password extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
-  factory Pasword(String input) {
+  factory Password(String input) {
     assert(input != null);
-    return Pasword._(
+    return Password._(
       validatePassword(input),
     );
   }
 
-  const Pasword._(this.value);
+  const Password._(this.value);
 }
