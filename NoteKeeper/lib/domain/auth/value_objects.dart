@@ -4,6 +4,7 @@ import 'package:NoteKeeper/domain/core/value_validators.dart';
 import 'package:dartz/dartz.dart';
 
 class EmailAdress extends ValueObject<String> {
+  @override
   final Either<ValueFailure<String>, String> value;
 
   factory EmailAdress(String input) {
@@ -17,6 +18,7 @@ class EmailAdress extends ValueObject<String> {
 }
 
 class Password extends ValueObject<String> {
+  @override
   final Either<ValueFailure<String>, String> value;
 
   factory Password(String input) {

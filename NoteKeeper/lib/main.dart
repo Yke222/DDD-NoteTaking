@@ -1,6 +1,9 @@
+import 'package:NoteKeeper/injection.dart';
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
 void main() {
+  configureInjection(Environment.prod);
   runApp(MyApp());
 }
 
@@ -14,13 +17,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  const MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
@@ -29,13 +32,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final int _counter = 0;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      home: (Scaffold(
+      home: Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
         ),
@@ -43,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
+              const Text(
                 'You have pushed the button this many times:',
               ),
               Text(
@@ -53,15 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
-      )),
+      ),
     );
   }
-}
-
-Future<void> signIn({
-  @required String email,
-  @required String password,
-}) async {
-  // Sign user.
-  signIn(email: null, password: null);
 }
