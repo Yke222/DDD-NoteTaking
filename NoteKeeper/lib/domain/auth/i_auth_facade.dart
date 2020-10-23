@@ -1,4 +1,5 @@
 import 'package:NoteKeeper/domain/auth/auth_failure.dart';
+import 'package:NoteKeeper/domain/auth/user.dart';
 import 'package:NoteKeeper/domain/auth/value_objects.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
@@ -10,6 +11,9 @@ import 'package:flutter/cupertino.dart';
 /// Dart doesn't use Interfaces, so in order to simulate the same behavior, we
 /// will be using [Facades].
 abstract class IAuthFacade {
+  /// Get Sign in user.
+  Future<Option<LocalUser>> getSignedInUser();
+
   /// Register with provided [emailAdress] and [password].
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
     @required EmailAdress emailAdress,
@@ -24,4 +28,7 @@ abstract class IAuthFacade {
 
   // Google sign in, no parameters needed.
   Future<Either<AuthFailure, Unit>> signInWithGoogle();
+
+  /// Sign out.
+  Future<void> signOut();
 }

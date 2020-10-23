@@ -1,5 +1,7 @@
 import 'package:NoteKeeper/domain/auth/auth_failure.dart';
 import 'package:NoteKeeper/domain/auth/i_auth_facade.dart';
+import 'package:NoteKeeper/domain/auth/user.dart';
+import 'package:NoteKeeper/domain/core/value_objects.dart';
 import 'package:dartz/dartz.dart';
 import 'package:NoteKeeper/domain/auth/value_objects.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,6 +19,20 @@ class FirebaseAuthFacade implements IAuthFacade {
     this._firebaseAuth,
     this._googleSignIn,
   );
+
+  Option<LocalUser> _maybeUser(String uid) {
+    return (uid == null || uid == '')
+        ? const None()
+        : Some(LocalUser(
+            id: UniqueId.fromUniqueString(uid),
+          ));
+  }
+
+  @override
+  Future<Option<LocalUser>> getSignedInUser() {
+    final fbUid = FirebaseAuth.instance.currentUser?.uid;
+    return Future.value(_maybeUser(fbUid));
+  }
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
@@ -85,4 +101,10 @@ class FirebaseAuthFacade implements IAuthFacade {
       return left(const AuthFailure.serverError());
     }
   }
+
+  @override
+  Future<void> signOut() => Future.wait([
+        _googleSignIn.signOut(),
+        _firebaseAuth.signOut(),
+      ]);
 }
