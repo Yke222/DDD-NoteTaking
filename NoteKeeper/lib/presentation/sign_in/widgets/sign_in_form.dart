@@ -35,6 +35,7 @@ class SignInForm extends StatelessWidget {
               ? AutovalidateMode.always
               : AutovalidateMode.disabled,
           child: ListView(
+            padding: const EdgeInsets.all(8),
             children: [
               const Text(
                 '📔',
@@ -119,7 +120,11 @@ class SignInForm extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
-              )
+              ),
+              if (state.isSubmiting) ...[
+                const SizedBox(height: 8),
+                const LinearProgressIndicator()
+              ]
             ],
           ),
         );
