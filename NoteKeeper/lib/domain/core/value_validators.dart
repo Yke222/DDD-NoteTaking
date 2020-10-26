@@ -1,6 +1,5 @@
 import 'package:NoteKeeper/domain/core/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:kt_dart/kt.dart';
 
 Either<ValueFailure<String>, String> validateEmailAddress(String input) {
