@@ -1,0 +1,13 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/.flutter-plugins-dependencies": false,
+        ".flutter-plugins-dependencies": true,
+        "lib\\application\\notes\\note_watcher/note_watcher_bloc.freezed.dart": true
+    },
+    "explorerExclude.backup": null
+}

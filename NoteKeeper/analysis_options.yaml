@@ -6,6 +6,8 @@ analyzer:
     - "*.freezed.dart"
     - "lib/**/*.g.dart"
     - "lib/**/*.freezed.dart"
+    - "lib/generated_plugin_registrant.dart"
+    - "lib/*.config.dart"
     
   errors:
     missing_return: error
