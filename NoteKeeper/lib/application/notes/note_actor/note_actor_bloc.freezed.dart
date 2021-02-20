@@ -57,6 +57,8 @@ abstract class $NoteActorEventCopyWith<$Res> {
           NoteActorEvent value, $Res Function(NoteActorEvent) then) =
       _$NoteActorEventCopyWithImpl<$Res>;
   $Res call({Note note});
+
+  $NoteCopyWith<$Res> get note;
 }
 
 /// @nodoc
@@ -76,6 +78,16 @@ class _$NoteActorEventCopyWithImpl<$Res>
       note: note == freezed ? _value.note : note as Note,
     ));
   }
+
+  @override
+  $NoteCopyWith<$Res> get note {
+    if (_value.note == null) {
+      return null;
+    }
+    return $NoteCopyWith<$Res>(_value.note, (value) {
+      return _then(_value.copyWith(note: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -85,6 +97,9 @@ abstract class _$DeletedCopyWith<$Res>
       __$DeletedCopyWithImpl<$Res>;
   @override
   $Res call({Note note});
+
+  @override
+  $NoteCopyWith<$Res> get note;
 }
 
 /// @nodoc
